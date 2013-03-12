@@ -28,6 +28,7 @@ gem 'slim'
 gem 'devise'
 
 gem 'formtastic'
+gem 'acts_as_list'
 
 group :development, :test do
   gem 'rspec-rails'

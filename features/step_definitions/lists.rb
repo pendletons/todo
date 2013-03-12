@@ -40,6 +40,13 @@ When(/^I click on my list$/) do
   click_link('New List')
 end
 
+When(/^1 list item is complete$/) do
+  i = Item.find(1)
+  i.status_id = Item::COMPLETED
+  i.save
+  visit list_path(i.list_id)
+end
+
 Then(/^I should see my new list with 1 item$/) do
   page.should have_content "New List"
   page.should have_content "Item 1"
@@ -50,4 +57,8 @@ Then(/^I should see my new list with 2 items$/) do
   page.should have_content "New List"
   page.should have_content "Item 1"
   page.should have_content "Item 2"
+end
+
+Then(/^I should see my completed item$/) do
+  find('#item_list').should have_css('li#item_1.complete')
 end

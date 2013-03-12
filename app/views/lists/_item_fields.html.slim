@@ -1,0 +1,8 @@
+div
+  - if f.object.errors.any?
+    p.notice= "At least one item is required"
+  = f.semantic_errors
+  = f.label :name, 'Item '
+  = f.text_field :name
+  = f.hidden_field :_destroy
+  = link_to 'remove', '#', class: 'remove_fields'

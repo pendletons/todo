@@ -10,7 +10,12 @@ p= @list.name
 
 p
   strong Items
-- @list.items.each do |item|
-  p= item.name
+ul#item_list[data-update-url="#{sort_items_url}"]
+  - @list.items.each do |item|
+    - if item.complete?
+      - partial = 'items/complete'
+    - else
+      - partial = 'items/incomplete'
+    = render partial: partial, locals: { item: item }
 
 p= link_to 'Edit List', edit_list_path(@list)

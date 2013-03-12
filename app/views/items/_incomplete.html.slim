@@ -1,0 +1,5 @@
+= content_tag_for :li, item, {class: 'item'} do
+  span.handle [move]
+  input[type="checkbox" id="item_#{item.id}"]
+  label[for="item_#{item.id}"]= item.name
+  a[href='#' class='delete_item'] (delete)

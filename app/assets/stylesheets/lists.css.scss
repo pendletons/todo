@@ -7,3 +7,20 @@
 .formtastic ol li {
 	list-style-type: none;
 }
+ul {
+	padding-left: 5px;
+}
+ul li {
+	list-style-type: none;
+}
+li.complete span.name, li.complete label {
+	text-decoration: line-through;
+}
+li span.handle {
+	color: #646464;
+	cursor: move;
+	margin-right: 5px;
+}
+a.delete_item {
+	margin-left: 5px;
+}

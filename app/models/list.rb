@@ -1,8 +1,8 @@
 class List < ActiveRecord::Base
   belongs_to :category
-  has_many :items, dependent: :destroy
+  has_many :items, dependent: :destroy, order: :position
 
-  accepts_nested_attributes_for :items, reject_if: lambda { |i| i[:name].blank? }
+  accepts_nested_attributes_for :items, reject_if: proc { |i| i['name'].blank? }, allow_destroy: true
 
   attr_accessible :category_id, :name, :items_attributes
 
@@ -10,11 +10,4 @@ class List < ActiveRecord::Base
 
   validates :category, :name, presence: true
   validates :name, length: { within: 3..25 }
-  validate :minimum_items
-
-  def minimum_items
-    if self.items.length < 1
-      self.errors[:base] << "A list must have at least one item."
-    end
-  end
 end

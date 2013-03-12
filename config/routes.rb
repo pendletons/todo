@@ -1,5 +1,7 @@
 Todo::Application.routes.draw do
-  resources :items
+  resources :items do
+    collection { post :sort }
+  end
   resources :lists
   resources :categories
 

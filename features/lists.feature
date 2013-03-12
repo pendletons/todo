@@ -20,3 +20,11 @@ Feature: Lists
       And I go to the lists page
       And I click on my list
     Then I should see my new list with 2 items
+
+  Scenario: View list with completed items
+    Given I am logged in
+    When I add a list with 2 items
+      And 1 list item is complete
+      And I go to the lists page
+      And I click on my list
+    Then I should see my completed item
