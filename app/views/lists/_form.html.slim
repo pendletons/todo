@@ -1,0 +1,11 @@
+= semantic_form_for @list do |f|
+  = f.inputs "List Info", id: 'info' do
+    = f.input :category_id, as: :select, collection: current_user.categories
+    = link_to 'Add new category', new_category_path
+    = f.input :name
+  = f.inputs for: :items do |item, i|
+    - if i <= 1
+      = item.inputs name: "Item ##{i}"
+    - else
+      = item.inputs name: "Item ##{i} (optional)"
+  = f.actions

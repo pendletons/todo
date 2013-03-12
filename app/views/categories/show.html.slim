@@ -1,0 +1,15 @@
+p#notice= notice
+
+p
+  strong Name: &nbsp;
+  = @category.name
+
+p
+  strong Lists:
+
+- @category.lists.each do |list|
+  p= link_to list.name, list_path(list)
+
+= link_to 'Edit', edit_category_path(@category)
+= ' | '
+= link_to 'All Categories', categories_path

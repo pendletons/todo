@@ -1,0 +1,9 @@
+h3 To Do Lists
+- @lists.each do |list|
+  p
+    = link_to list.category_name, category_path(list.category)
+    = ' - '
+    = link_to list.name, list_path(list)
+- if @lists.empty?
+  p You have no lists!
+p= link_to 'Add a list', new_list_path
